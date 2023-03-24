@@ -37,22 +37,22 @@ func (g *Game) isLost() bool {
 }
 
 func (g *Game) guess(char rune) {
-    if strings.ContainsRune(g.lettersGuessed, char) {
-        fmt.Println("You already guessed that letter")
-        fmt.Println()
-        return
-    }
-    g.lettersGuessed += string(char)
-    if strings.ContainsRune(g.word, char) {
-        for i, r := range g.word {
-            if char == r {
-                g.guessed = g.guessed[:i] + string(char) + g.guessed[i + 1:]
-            }
-        }
-    } else {
-        g.incorrect++
-    }
+  if strings.ContainsRune(g.lettersGuessed, char) {
+    fmt.Println("You already guessed that letter")
     fmt.Println()
+    return
+  }
+  g.lettersGuessed += string(char)
+  if strings.ContainsRune(g.word, char) {
+    for i, r := range g.word {
+      if char == r {
+        g.guessed = g.guessed[:i] + string(char) + g.guessed[i + 1:]
+      }
+    }
+  } else {
+    g.incorrect++
+  }
+  fmt.Println()
 }
 
 func (g *Game) display() {
